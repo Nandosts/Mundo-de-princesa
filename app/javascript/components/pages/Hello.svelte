@@ -56,8 +56,9 @@
   }
 
   window.addEventListener("scroll", verificarRolagem);
-
-  produtos = lista.slice(0, produtosPorPagina);
+  if (lista && lista.length > 0) {
+    produtos = lista.slice(0, produtosPorPagina);
+  }
 </script>
 
 <h1>Bem-vindo ao Mundo de Princesa!</h1>
@@ -70,6 +71,10 @@
     </div>
   {/each}
 </div>
+
+{#if produtos.length === 0}
+  <p>Nenhum produto encontrado.</p>
+{/if}
 
 {#if mostrandoLoading}
   <Loading />
