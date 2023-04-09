@@ -1,0 +1,33 @@
+# .rubocop.yml
+
+# Configuração básica para o RuboCop
+
+# AllCops configurações
+AllCops:
+  Exclude:
+    - 'bin/**/*'
+  Include:
+    - "**/*.rb" # Inclua todos os arquivos Ruby no projeto
+  TargetRubyVersion: 3.0 # Versão do Ruby que o projeto está usando
+
+# Configuração de estilo
+Style/Documentation:
+  Enabled: false # Desativa a verificação de documentação
+Style/ClassAndModuleChildren:
+  Enabled: false # Desativa a verificação de aninhamento de classes e módulos
+Style/EmptyMethod:
+  Enabled: false # Desativa a verificação de métodos vazios
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Layout/IndentationConsistency:
+  Enabled: false # Desativa a verificação de consistência de indentação
+Lint/EmptyBlock:
+  Enabled: false # Desativa a verificação de blocos vazios
+
+# Configuração de Lint
+Lint:
+  Enabled: true # Ativa as verificações de lint
+
+# Configuração de Metrics
+Metrics:
+  Enabled: true # Ativa as verificações de métricas de código
