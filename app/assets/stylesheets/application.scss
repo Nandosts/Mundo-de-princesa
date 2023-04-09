@@ -1,7 +1,9 @@
 /* Variáveis */
-$rosa-principal: #af7784;
-$texto-principal: #0073b3;
-$rosa-background: #ffb3e6;
+:root {
+  --rosa-principal: #af7784;
+  --texto-principal: #0073b3;
+  --rosa-background: #ffb3e6;
+}
 
 /* Reset CSS */
 *,
@@ -14,7 +16,7 @@ $rosa-background: #ffb3e6;
 
 /* Estilos gerais */
 body {
-  background: $rosa-background;
+  background: var(--rosa-background);
   height: 100vh;
 }
 
@@ -34,7 +36,7 @@ nav {
   background: radial-gradient(
     100% 100% at 0.81% 0%,
     #00000050 0%,
-    $rosa-background 100%
+    var(--rosa-background) 100%
   );
 }
 
@@ -57,7 +59,7 @@ nav {
 /* Link da navbar */
 .navbar-collapse a {
   position: relative; /* Adiciona posição relativa para poder usar ::after */
-  color: $texto-principal;
+  color: var(--texto-principal);
   font-size: 1.3rem;
   text-decoration: none;
   &:hover {
@@ -70,18 +72,17 @@ nav {
     bottom: -3px; /* Ajuste a altura da barra aqui */
     width: 100%;
     height: 2px; /* Ajuste a largura da barra aqui */
-    background-color: $texto-principal; /* Cor da barra */
+    background-color: var(--texto-principal); /* Cor da barra */
     transform: scaleX(0); /* Inicialmente, a barra não é visível */
     transition: transform 0.3s ease-in-out; /* Adiciona uma transição suave */
   }
   &:hover::after {
-    transform: scaleX(
-      1
-    ); /* Ao passar o mouse, a barra aparece */
+    transform: scaleX(1); /* Ao passar o mouse, a barra aparece */
   }
 }
 
 /* Conteúdo principal */
 .container {
   margin-top: 20px;
+  padding-inline: 1rem;
 }
