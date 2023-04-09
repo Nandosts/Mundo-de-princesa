@@ -5,7 +5,7 @@
     id: string;
     nome: string;
     descricao: string;
-    preco: number;
+    preco: string;
     quantidade: number;
     imageUrl: string;
   }[];
@@ -15,7 +15,7 @@
       id: "1",
       nome: "Produto 1",
       descricao: "Descrição 1",
-      preco: 1000,
+      preco: '1000',
       quantidade: 1,
       imageUrl: "https://via.placeholder.com/150",
     },

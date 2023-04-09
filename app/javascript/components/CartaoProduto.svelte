@@ -3,7 +3,7 @@
     id: string;
     nome: string;
     descricao: string;
-    preco: number;
+    preco: string;
     quantidade: number;
     imageUrl: string;
   };
@@ -11,7 +11,7 @@
   export let id = "1";
   export let nome = "Produto";
   export let descricao = "Produto";
-  export let preco = 99.99;
+  export let preco = "99.99";
   export let quantidade = 1;
   export let imageUrl = "https://via.placeholder.com/150";
 </script>
@@ -21,17 +21,24 @@
     id: "1",
     nome: "Produto",
     descricao: "Produto",
-    preco: 99.99,
+    preco: "99.99",
     quantidade: 1,
     imageUrl: "https://via.placeholder.com/150",
   };
 </script>
 
 <div class="product-card">
-  <img src={produto.imageUrl || imageUrl} alt={produto.nome || nome} class="product-card__image" />
+  <img
+    src={produto.imageUrl || imageUrl}
+    alt={produto.nome || nome}
+    class="product-card__image"
+  />
   <h2 class="product-card__title">{produto.nome || nome}</h2>
-  <p class="product-card__price">{"R$" + (produto.preco || preco).toFixed(2)}</p>
-  <button class="product-card__button">Comprar</button>
+  <p class="product-card__price">
+    {"R$" + parseFloat(produto.preco || preco).toFixed(2)}
+  </p>
+  <button class="product-card__button">Comprar</button
+  ><!-- Use parseFloat para converter o preço de string para número -->
 </div>
 
 <style>
