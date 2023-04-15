@@ -1,7 +1,9 @@
 <script lang="ts" context="module"></script>
 
 <script lang="ts">
+  import axios from "axios";
   export let product = {
+    id: "",
     nome: "",
     quantidade: 0,
     preco: "0.0",
@@ -20,6 +22,34 @@
 
   function updateQuantity(event) {
     product.quantidade = parseInt(event.target.value) || 0;
+  }
+
+  function removeItem() {
+    const csrfTokenElement = document.getElementsByName("csrf-token")[0] as
+      | HTMLMetaElement
+      | undefined;
+    const csrfToken = csrfTokenElement?.content || "";
+
+    // Configurar cabeçalhos da requisição
+    const headers = {
+      "Content-Type": "application/json",
+      "X-CSRF-Token": csrfToken,
+    };
+    // Faz a requisição para a rota carrinho/remove_item_do_carrinho com o ID do produto
+    axios
+      .post(
+        "/carrinho/remove_item_do_carrinho",
+        { produto: product },
+        { headers }
+      )
+      .then((response) => {
+        // Atualiza o estado do produto no carrinho após a remoção do item
+        // Você pode implementar a lógica específica para atualizar o estado do carrinho aqui
+        location.reload();
+      })
+      .catch((error) => {
+        console.error("Erro ao remover item do carrinho", error);
+      });
   }
 </script>
 
@@ -45,6 +75,7 @@
     <div class="quantity-buttons">
       <button class="quantity-button" on:click={increaseQuantity}>+</button>
       <button class="quantity-button" on:click={decreaseQuantity}>-</button>
+      <button class="remove-button" on:click={removeItem}>Remover</button>
     </div>
   </div>
 </div>

@@ -1,4 +1,5 @@
 <script lang="ts" context="module">
+  import axios from "axios";
   export type TProduto = {
     id: string;
     nome: string;
@@ -25,6 +26,32 @@
     quantidade: 1,
     imageUrl: "https://via.placeholder.com/150",
   };
+
+  // Importar o pacote Axios
+
+  // Função para adicionar ao carrinho usando Axios
+  function adicionarAoCarrinho() {
+    const csrfTokenElement = document.getElementsByName("csrf-token")[0] as
+      | HTMLMetaElement
+      | undefined;
+    const csrfToken = csrfTokenElement?.content || "";
+
+    // Configurar cabeçalhos da requisição
+    const headers = {
+      "Content-Type": "application/json",
+      "X-CSRF-Token": csrfToken,
+    };
+
+    // Fazer a requisição POST usando Axios
+    axios
+      .post("/carrinho/adiciona_produto_no_carrinho", { produto }, { headers })
+      .then((response) => {
+        console.log("Produto adicionado ao carrinho com sucesso!");
+      })
+      .catch((error) => {
+        console.error("Erro ao adicionar produto ao carrinho:", error);
+      });
+  }
 </script>
 
 <div class="product-card">
@@ -37,7 +64,9 @@
   <p class="product-card__price">
     {"R$" + parseFloat(produto.preco || preco).toFixed(2)}
   </p>
-  <button class="product-card__button"> Adicionar ao carrinho </button>
+  <button class="product-card__button" on:click={adicionarAoCarrinho}>
+    Adicionar ao carrinho
+  </button>
 </div>
 
 <style>
