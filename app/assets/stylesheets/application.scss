@@ -50,14 +50,19 @@ nav {
   padding: 0;
   display: flex;
   align-items: center;
+  justify-content: center; /* Alterado para centralizar os itens */
 }
 
 .navbar-collapse li {
   margin-left: 10px;
 }
 
+.nav-cart {
+  margin-left: 10px; /* Adicionado para criar espaço entre os itens */
+}
+
 /* Link da navbar */
-.navbar-collapse a {
+.navbar-collapse a, .nav-cart a {
   position: relative; /* Adiciona posição relativa para poder usar ::after */
   color: var(--texto-principal);
   font-size: 1.3rem;
