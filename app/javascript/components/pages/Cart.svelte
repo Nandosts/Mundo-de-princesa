@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Toastify from "toastify-js";
   import CartaoCarrinho from "../CartaoCarrinho.svelte";
 
   export let carrinho = []; // Array de produtos no carrinho

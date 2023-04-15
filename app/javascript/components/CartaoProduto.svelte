@@ -1,5 +1,6 @@
 <script lang="ts" context="module">
   import axios from "axios";
+  import { showToast } from "./flashMessage";
   export type TProduto = {
     id: string;
     nome: string;
@@ -46,10 +47,10 @@
     axios
       .post("/carrinho/adiciona_produto_no_carrinho", { produto }, { headers })
       .then((response) => {
-        console.log("Produto adicionado ao carrinho com sucesso!");
+        showToast("Produto adicionado ao carrinho com sucesso!", "#009688");
       })
       .catch((error) => {
-        console.error("Erro ao adicionar produto ao carrinho:", error);
+        showToast("Erro ao adicionar produto ao carrinho", "#f44336");
       });
   }
 </script>

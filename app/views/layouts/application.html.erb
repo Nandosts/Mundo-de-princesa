@@ -11,14 +11,7 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_pack_tag 'application' %>
   </head>
-  <body>
-    <!-- Aqui está o código para exibir flash messages -->
-    <% flash.each do |key, value| %>
-      <div class="alert alert-<%= key %>">
-        <%= value %>
-      </div>
-    <% end %>
-    
+  <body data-flash-messages="<%= JSON.dump(flash.to_a) %>">
     <nav>
       <div class="navbar-container">
         <%= link_to root_path do %>

@@ -1,7 +1,9 @@
-<script lang="ts" context="module"></script>
+<script context="module"></script>
 
-<script lang="ts">
+<script>
   import axios from "axios";
+  import { showToast } from "./flashMessage";
+  let flashMessage = "";
   export let product = {
     id: "",
     nome: "",
@@ -10,6 +12,7 @@
     imageUrl: "https://i.stack.imgur.com/GsDIl.jpg",
   };
 
+  let itemRemovido = false;
   function increaseQuantity() {
     product.quantidade++;
   }
@@ -25,17 +28,13 @@
   }
 
   function removeItem() {
-    const csrfTokenElement = document.getElementsByName("csrf-token")[0] as
-      | HTMLMetaElement
-      | undefined;
-    const csrfToken = csrfTokenElement?.content || "";
+    const csrfToken = document.getElementsByName("csrf-token")[0].content;
 
-    // Configurar cabeçalhos da requisição
     const headers = {
       "Content-Type": "application/json",
       "X-CSRF-Token": csrfToken,
     };
-    // Faz a requisição para a rota carrinho/remove_item_do_carrinho com o ID do produto
+
     axios
       .post(
         "/carrinho/remove_item_do_carrinho",
@@ -43,17 +42,19 @@
         { headers }
       )
       .then((response) => {
-        // Atualiza o estado do produto no carrinho após a remoção do item
-        // Você pode implementar a lógica específica para atualizar o estado do carrinho aqui
-        location.reload();
+        showToast("Item removido do carrinho com sucesso", "#009688");
+        itemRemovido = true;
       })
       .catch((error) => {
-        console.error("Erro ao remover item do carrinho", error);
+        showToast(
+          `Erro ao remover item do carrinho: ${error.message}`,
+          "#f44336"
+        );
       });
   }
 </script>
 
-<div class="product">
+<div class="product" class:hidden={itemRemovido}>
   <div class="product-image">
     <img src={product.imageUrl} alt="Imagem do product" />
   </div>
@@ -138,6 +139,10 @@
       &:focus {
         outline: none;
       }
+    }
+
+    &.hidden {
+      display: none;
     }
   }
 </style>

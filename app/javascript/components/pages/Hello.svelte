@@ -62,7 +62,7 @@
 </script>
 
 <h1>Bem-vindo ao Mundo de Princesa!</h1>
-<p>Aqui estão alguns produtos incríveis para você escolher:</p>
+<p>Aqui estão alguns produtos incríveis preparados especialmente para você:</p>
 
 <!-- Adicione uma div como wrapper em torno dos produtos -->
 <div class="produtos-wrapper">

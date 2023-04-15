@@ -1,4 +1,8 @@
 <!-- app/views/home/index.html.erb -->
+<body data-flash-messages="<%= JSON.dump(flash.to_a) %>">
+  <p><%= flash[:notice] %></p> <!-- Exibe a mensagem de flash notice -->
+  <p><%= flash[:alert] %></p> <!-- Exibe a mensagem de flash alert -->
+</body>
 
 <div id="svelte-app" data-cart="<%= @cart.to_json %>"></div>
 
