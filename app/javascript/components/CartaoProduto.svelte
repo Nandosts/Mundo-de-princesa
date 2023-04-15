@@ -37,8 +37,7 @@
   <p class="product-card__price">
     {"R$" + parseFloat(produto.preco || preco).toFixed(2)}
   </p>
-  <button class="product-card__button">Comprar</button
-  ><!-- Use parseFloat para converter o preço de string para número -->
+  <button class="product-card__button"> Adicionar ao carrinho </button>
 </div>
 
 <style>
@@ -48,6 +47,15 @@
     border-radius: 4px;
     padding: 16px;
     width: 250px;
+  }
+
+  @media (min-width: 1500px) {
+    .product-card {
+      width: 300px;
+    }
+    .product-card__image {
+      min-height: 250px;
+    }
   }
 
   .product-card__image {

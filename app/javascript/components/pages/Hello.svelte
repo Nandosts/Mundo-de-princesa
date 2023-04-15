@@ -97,6 +97,12 @@
     margin-bottom: 16px;
   }
 
+  @media (min-width: 1500px) {
+    .grid-container {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+  }
+
   .grid-item {
     display: flex;
     justify-content: center;
