@@ -65,7 +65,7 @@
 
   .product-card__price {
     font-size: 1rem;
-    color: #0073b3;
+    color: var(--texto-secundario);
     margin-bottom: 8px;
   }
 
@@ -75,7 +75,7 @@
     padding: 8px;
     font-size: 1rem;
     text-align: center;
-    background-color: #0073b3;
+    background-color: var(--texto-principal);
     color: #fff;
     border: none;
     border-radius: 4px;

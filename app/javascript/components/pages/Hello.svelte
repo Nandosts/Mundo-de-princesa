@@ -64,12 +64,15 @@
 <h1>Bem-vindo ao Mundo de Princesa!</h1>
 <p>Aqui estão alguns produtos incríveis para você escolher:</p>
 
-<div class="grid-container">
-  {#each produtos as produto}
-    <div class="grid-item">
-      <CartaoProduto {produto} />
-    </div>
-  {/each}
+<!-- Adicione uma div como wrapper em torno dos produtos -->
+<div class="produtos-wrapper">
+  <div class="grid-container">
+    {#each produtos as produto}
+      <div class="grid-item">
+        <CartaoProduto {produto} />
+      </div>
+    {/each}
+  </div>
 </div>
 
 {#if produtos.length === 0}
@@ -81,6 +84,12 @@
 {/if}
 
 <style lang="scss">
+  .produtos-wrapper {
+    display: grid;
+    margin-inline: auto;
+    width: 90% !important;
+  }
+
   .grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -100,5 +109,6 @@
 
   p {
     margin-bottom: 16px;
+    color: var(--texto-secundario);
   }
 </style>

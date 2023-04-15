@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import CartaoCarrinho from "../CartaoCarrinho.svelte";
 
   export let carrinho = []; // Array de produtos no carrinho

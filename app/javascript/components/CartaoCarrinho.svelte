@@ -36,6 +36,7 @@
         bind:value={product.quantidade}
         on:input={updateQuantity}
         class="quantity-input"
+        min="0"
       />
     </p>
     <p>
@@ -78,7 +79,7 @@
         height: 2rem;
         border: none;
         border-radius: 5px;
-        background-color: #000;
+        background-color: var(--texto-secundario);
         color: #fff;
         font-size: 1rem;
         display: flex;
@@ -96,10 +97,11 @@
 
     .quantity-input {
       padding: 0.5rem;
+      width: 4.5rem;
       border: none;
       border-radius: 5px;
       background-color: #f8f8f8;
-      color: #000;
+      color: var(--texto-secundario);
       font-size: 1rem;
 
       &:focus {

@@ -1,8 +1,12 @@
+@import "font-awesome";
+
 /* Variáveis */
 :root {
-  --rosa-principal: #af7784;
-  --texto-principal: #0073b3;
-  --rosa-background: #ffb3e6;
+  --rosa-principal: #ff69b4; /* Rosa mais vibrante */
+  --rosa-claro: #ffb6c1; /* Rosa claro */
+  --rosa-escuro: #ff1493; /* Rosa escuro */
+  --texto-principal: #8b008b; /* Cor de texto principal */
+  --texto-secundario: #191919; /* Cor de texto principal */
 }
 
 /* Reset CSS */
@@ -16,8 +20,13 @@
 
 /* Estilos gerais */
 body {
-  background: var(--rosa-background);
-  height: 100vh;
+  background: url("/assets/background-md.svg"); /* Substitua o caminho da imagem pelo caminho correto em seu projeto */
+  background-repeat: no-repeat; /* ajuste a repetição da imagem conforme necessário */
+  background-attachment: fixed;
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Navbar */
@@ -32,12 +41,6 @@ nav {
   align-items: center;
   width: 100%;
   padding: 10px;
-
-  background: radial-gradient(
-    100% 100% at 0.81% 0%,
-    #00000050 0%,
-    var(--rosa-background) 100%
-  );
 }
 
 .navbar-icon {
@@ -62,7 +65,8 @@ nav {
 }
 
 /* Link da navbar */
-.navbar-collapse a, .nav-cart a {
+.navbar-collapse a,
+.nav-cart a {
   position: relative; /* Adiciona posição relativa para poder usar ::after */
   color: var(--texto-principal);
   font-size: 1.3rem;
