@@ -1,0 +1,18 @@
+<div class="navbar">
+  <div class="navbar-left">
+    <div class="navbar-phone">
+      <span>+55 38 9728-0364</span>
+    </div>
+  </div>
+  <div class="navbar-right">
+    <% if current_user.present? %>
+      <%= link_to destroy_user_session_path, method: :delete do %>
+        <i class="fa fa-sign-out"></i>
+      <% end %>
+    <% else %>
+      <%= link_to new_user_session_path do %>
+        <i class="fa fa-sign-in"></i>
+      <% end %>
+    <% end %>
+  </div>
+</div>
