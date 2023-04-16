@@ -77,18 +77,32 @@
     <div class="quantity-buttons">
       <button class="quantity-button" on:click={increaseQuantity}>+</button>
       <button class="quantity-button" on:click={decreaseQuantity}>-</button>
-      <button class="remove-button" on:click={removeItem}>Remover</button>
     </div>
+    <button class="remove-button" on:click={removeItem}>
+      <i class="fas fa-trash" />
+    </button>
   </div>
 </div>
 
 <style lang="scss">
   .product {
+    position: relative;
     display: flex;
     margin-bottom: 1rem;
     padding: 1rem;
     border-radius: 5px;
     background-color: #f8f8f8;
+    .remove-button {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      padding: 0.5rem;
+      border-radius: 5px;
+      color: var(--texto-secundario);
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
     .product-image {
       width: 6rem;
       height: 6rem;
