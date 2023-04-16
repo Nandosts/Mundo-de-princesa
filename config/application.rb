@@ -28,4 +28,5 @@ module MundoDePrincesa
       YAML.load_file(env_file).each { |key, value| ENV[key.to_s] = value } if File.exist?(env_file)
     end
   end
+  ENV['NODE_OPTIONS'] = '--openssl-legacy-provider'
 end
