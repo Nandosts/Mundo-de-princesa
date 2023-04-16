@@ -6,6 +6,9 @@
   </div>
   <div class="navbar-right">
     <% if current_user.present? %>
+        <% if current_user.admin? %>
+          <a class="nav-link" href="/produtos"> Produtos </a>
+        <% end %>
       <%= link_to destroy_user_session_path, method: :delete do %>
         <i class="fa fa-sign-out"></i>
       <% end %>
