@@ -1,12 +1,19 @@
 # app/controllers/produtos_controller.rb
 
 class ProdutosController < ApplicationController
+  before_action :authenticate_user!
+  before_action :check_admin
+
   def index
     @produtos = Produto.all
   end
 
   def new
     @produto = Produto.new
+  end
+
+  def show
+    @produto = Produto.find(params[:id])
   end
 
   def create
@@ -41,5 +48,11 @@ class ProdutosController < ApplicationController
 
   def produto_params
     params.require(:produto).permit(:id, :nome, :descricao, :preco, :quantidade, :imageUrl)
+  end
+
+  def check_admin
+    return if current_user&.admin?
+
+      redirect_to root_path, alert: 'Acesso negado. Você precisa ser um administrador para realizar essa ação.'
   end
 end

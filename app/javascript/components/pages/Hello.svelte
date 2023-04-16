@@ -9,8 +9,10 @@
     preco: string;
     quantidade: number;
     imageUrl: string;
+    hidden?: boolean;
   };
   export let lista: TProduto[] = [];
+  export let is_admin = false;
   let produtos: TProduto[] = [];
   let larguraPorProduto = 250; // largura de cada Produto de cartões em pixels
   let gapEntreProdutos = 16; // espaçamento (gap) entre os produtos em pixels
@@ -61,16 +63,28 @@
   }
 </script>
 
-<h1>Bem-vindo ao Mundo de Princesa!</h1>
-<p>Aqui estão alguns produtos incríveis preparados especialmente para você:</p>
+<div class="produtos-introducao">
+  <div>
+    <h1>Bem-vindo ao Mundo de Princesa!</h1>
+    <p>
+      Aqui estão alguns produtos incríveis preparados especialmente para você:
+    </p>
+  </div>
+
+  {#if is_admin}
+    <a class="produtos-new" href="/produtos/new"> Criar novo Produto </a>
+  {/if}
+</div>
 
 <!-- Adicione uma div como wrapper em torno dos produtos -->
 <div class="produtos-wrapper">
   <div class="grid-container">
     {#each produtos as produto}
-      <div class="grid-item">
-        <CartaoProduto {produto} />
-      </div>
+      {#if produto.hidden != true}
+        <div class="grid-item">
+          <CartaoProduto bind:produto {is_admin} />
+        </div>
+      {/if}
     {/each}
   </div>
 </div>
@@ -84,8 +98,26 @@
 {/if}
 
 <style lang="scss">
+  .produtos-introducao {
+    display: flex;
+    justify-content: space-between;
+  }
+  .produtos-new {
+    height: min-content;
+    padding: 0.5rem;
+    background-color: #fff;
+    border: 2px solid var(--texto-principal);
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bolder;
+
+    &:hover {
+      filter: brightness(0.9);
+    }
+  }
   .produtos-wrapper {
     display: grid;
+    margin-top: 1rem;
     margin-inline: auto;
     width: 90% !important;
   }

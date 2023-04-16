@@ -1,17 +1,17 @@
 // app/javascript/packs/hello_svelte.js
 
-import Hello from "../components/pages/Hello.svelte";
+import ShowProduto from "../components/pages/ShowProduto.svelte";
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Obtenha a lista de itens do Rails Controller, por exemplo, usando uma variável global
+  // Obtenha a produto do Rails Controller, por exemplo, usando uma variável global
   const dataset = document.getElementById("svelte-app").dataset;
   if (dataset) {
-    const lista = JSON.parse(dataset.lista);
+    const produto = JSON.parse(dataset.produto);
     const admin = JSON.parse(dataset.admin || false) ;
-    const app = new Hello({
+    const app = new ShowProduto({
       target: document.getElementById("svelte-app"),
       props: {
-        lista: lista,
+        produto: produto,
         is_admin: admin,
       },
     });

@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   JSON.parse(document.body.dataset.flashMessages).forEach(flashMessage => {
-    console.log(document.body.dataset.flashMessages)
     const [type, message] = flashMessage;
 
     Toastify({
