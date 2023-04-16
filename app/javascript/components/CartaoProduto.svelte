@@ -116,14 +116,14 @@
       width: 300px;
     }
     .product-card__image {
-      min-height: 250px;
+      height: 250px;
     }
   }
 
   .product-card__image {
     width: 100%;
-    max-height: 200px;
-    object-fit: cover;
+    height: 200px;
+    object-fit: contain;
     border-radius: 4px;
     position: relative;
   }

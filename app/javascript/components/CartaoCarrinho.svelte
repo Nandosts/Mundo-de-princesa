@@ -11,6 +11,7 @@
     preco: "0.0",
     imageUrl: "https://i.stack.imgur.com/GsDIl.jpg",
   };
+  export let imageUrl = "https://via.placeholder.com/150";
 
   let itemRemovido = false;
   function increaseQuantity() {
@@ -57,7 +58,7 @@
 
 <div class="product" class:hidden={itemRemovido}>
   <div class="product-image">
-    <img src={product.imageUrl} alt="Imagem do product" />
+    <img src={product.imageUrl || imageUrl} alt="Imagem do produto" />
   </div>
   <div class="product-details">
     <h3>{product.nome}</h3>
