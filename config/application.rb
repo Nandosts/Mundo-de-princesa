@@ -21,5 +21,11 @@ module MundoDePrincesa
 
     config.middleware.use ActionDispatch::Session::CookieStore
     config.i18n.default_locale = :'pt-BR'
+
+    config.assets.initialize_on_precompile = false
+    config.before_configuration do
+      env_file = File.join(Rails.root, 'config', 'local_env.yml')
+      YAML.load_file(env_file).each { |key, value| ENV[key.to_s] = value } if File.exist?(env_file)
+    end
   end
 end
