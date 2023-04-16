@@ -44,6 +44,7 @@
       .then((response) => {
         showToast("Item removido do carrinho com sucesso", "#009688");
         itemRemovido = true;
+        product.quantidade = 0;
       })
       .catch((error) => {
         showToast(

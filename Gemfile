@@ -60,3 +60,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "pry", "~> 0.14.2"
 
 gem "font-awesome-sass", "~> 6.4"
+
+gem "figaro", "~> 1.2"
