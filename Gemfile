@@ -62,3 +62,5 @@ gem "pry", "~> 0.14.2"
 gem "font-awesome-sass", "~> 6.4"
 
 gem "figaro", "~> 1.2"
+
+gem "devise", "~> 4.9"

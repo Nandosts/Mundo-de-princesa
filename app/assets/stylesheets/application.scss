@@ -19,6 +19,44 @@
   box-sizing: border-box;
 }
 
+/* Estilos para a navbar */
+.navbar {
+  background-color: #f8f8f8;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.3rem 4rem;
+}
+
+/* Estilos para a parte esquerda da navbar */
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+/* Estilos para o número de telefone */
+.navbar-phone {
+  margin-right: 1rem;
+}
+
+/* Estilos para o email */
+.navbar-email {
+  margin-right: 1rem;
+}
+
+/* Estilos para a parte direita da navbar */
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+/* Estilos para o botão de login */
+.navbar-login {
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
 /* Estilos gerais */
 body {
   background: url("/assets/background-md.svg"); /* Substitua o caminho da imagem pelo caminho correto em seu projeto */

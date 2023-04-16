@@ -20,5 +20,6 @@ module MundoDePrincesa
     # config.eager_load_paths << Rails.root.join("extras")
 
     config.middleware.use ActionDispatch::Session::CookieStore
+    config.i18n.default_locale = :'pt-BR'
   end
 end
