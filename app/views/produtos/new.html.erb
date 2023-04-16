@@ -1,1 +1,25 @@
-<%= render 'form' %>
+<!-- app/views/produtos/form.html.erb -->
+<%= stylesheet_link_tag 'produtos_form', media: 'all' %>
+
+
+<h1>Novo Produto</h1>
+
+<%= form_with model: @produto, url: produtos_path, local: true do |form| %>
+  <%= form.label :nome, 'Nome' %>
+  <%= form.text_field :nome %>
+
+  <%= form.label :descricao, 'Descrição' %>
+  <%= form.text_area :descricao %>
+
+  <%= form.label :preco, 'Preço' %>
+  <%= form.number_field :preco, step: 0.01, value: number_with_precision(0, precision: 2) %>
+
+  <%= form.label :imagem, 'Imagem' %>
+  <%= form.file_field :imagem %>
+
+  <br/>
+  <br/>
+  <%= form.submit 'Criar Produto'%>
+<% end %>
+
+<%= link_to 'Voltar', produtos_path %>
