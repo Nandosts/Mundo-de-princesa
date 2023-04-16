@@ -27,6 +27,8 @@ module MundoDePrincesa
       env_file = File.join(Rails.root, 'config', 'local_env.yml')
       YAML.load_file(env_file).each { |key, value| ENV[key.to_s] = value } if File.exist?(env_file)
     end
+    
+    config.web_console.whitelisted_ips = ENV['MY_IP']
   end
   ENV['NODE_OPTIONS'] = '--openssl-legacy-provider'
 end
