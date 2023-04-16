@@ -5,9 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Produto.create(nome: 'Produto 2', descricao: 'Descrição 1', preco: 1000.3123, quantidade: 10, imageUrl: 'https://via.placeholder.com/150')
+Produto.create(nome: 'Produto 2', descricao: 'Descrição 1', preco: 1000.3123, quantidade: 10,
+               imagem: { url: 'https://via.placeholder.com/150' })
 User.create(
   email: ENV['ADMIN_EMAIL'],
   password: ENV['ADMIN_PASSWORD'],
-  admin: ENV['ADMIN_ROLE'] == 'admin' 
+  admin: ENV['ADMIN_ROLE'] == 'admin'
 )

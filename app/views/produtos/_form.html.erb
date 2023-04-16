@@ -17,8 +17,10 @@
   <%= form.label :quantidade, 'Quantidade' %>
   <%= form.number_field :quantidade, step: 1 %>
 
-  <%= form.label :imageUrl, 'URL da Imagem' %>
-  <%= form.text_field :imageUrl %>
+  <%= form.label :imagem, 'Imagem' %>
+  <%= form.file_field :imagem %>
+
+
 
   <%= form.submit action_name == 'new' ? 'Criar Produto' : 'Atualizar Produto' %>
 <% end %>
