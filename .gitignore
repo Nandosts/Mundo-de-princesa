@@ -41,3 +41,8 @@ yarn-debug.log*
 
 # Ignore application configuration
 /config/application.yml
+
+_site/
+.sass-cache/
+.jekyll-metadata
+jekyll_app/

@@ -67,3 +67,5 @@ gem "devise", "~> 4.9"
 
 
 gem "pg", "~> 1.4"
+
+gem "jekyll", "~> 4.3"
