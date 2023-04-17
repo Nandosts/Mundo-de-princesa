@@ -3,8 +3,7 @@
 
   export let carrinho = []; // Array de produtos no carrinho
   let preco_total = 0;
-  let quantidade = 1;
-  $: if (carrinho.length > 0) getTotalPrice();
+  $: if (carrinho && carrinho.length > 0) getTotalPrice();
 
   // Função para calcular o preço total do carrinho
   function getTotalPrice() {
@@ -13,7 +12,7 @@
 
     carrinho.forEach((product) => {
       const price = parseFloat(product.preco); // Considera a vírgula como separador decimal
-      preco_total += price * quantidade;
+      preco_total += price * product.quantidade;
     });
     return preco_total.toFixed(2); // Arredonda o resultado para 2 casas decimais
   }
@@ -46,15 +45,15 @@
       saudacao +
       "! Vim fazer compras pelo seu site, gostaria de encomendar contigo os seguintes produtos:\n ";
     carrinho.forEach((product, i) => {
-      if (!(quantidade > 0)) return;
+      if (!(product.quantidade > 0)) return;
       let produtoTexto =
         "\n" +
         product.nome +
         " (" +
-        quantidade +
+        product.quantidade +
         ")" +
         ": " +
-        (parseFloat(product.preco) * quantidade).toFixed(2);
+        (parseFloat(product.preco) * product.quantidade).toFixed(2);
 
       if (carrinho.length == i + 1) {
         produtoTexto =
