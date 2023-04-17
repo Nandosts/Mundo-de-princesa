@@ -3,7 +3,6 @@
 <script>
   import axios from "axios";
   import { showToast } from "./flashMessage";
-  let flashMessage = "";
   export let product = {
     id: "",
     nome: "",
@@ -11,6 +10,9 @@
     preco: "0.0",
     imageUrl: "https://i.stack.imgur.com/GsDIl.jpg",
   };
+  $: if (isNaN(product.quantidade) || product.quantidade == null) {
+    product.quantidade = 0;
+  }
   export let imageUrl = "https://via.placeholder.com/150";
 
   let itemRemovido = false;
