@@ -20,10 +20,7 @@ class ProdutosController < ApplicationController
     @produto = Produto.new(produto_params)
     if @produto.save
       begin
-        unless params[:produto][:imagem].nil?
-          image_change(@produto)
-          @produto.update(imageUrl: url_for(@produto.imagem))
-        end
+        image_change(@produto)
         flash.now[:notice] = 'Produto criado com sucesso!'
         redirect_to @produto
       rescue StandardError => e
@@ -42,10 +39,7 @@ class ProdutosController < ApplicationController
   def update
     if @produto.update(produto_params)
       begin
-        unless params[:produto][:imagem].nil?
-          image_change(@produto)
-          @produto.update(imageUrl: url_for(@produto.imagem))
-        end
+        image_change(@produto)
         flash.now[:notice] = 'Produto atualizado com sucesso!'
         redirect_to @produto
       rescue StandardError => e
