@@ -11,21 +11,23 @@
     preco: "0.0",
     imageUrl: "https://i.stack.imgur.com/GsDIl.jpg",
   };
+
+  let quantidade = 1;
   export let imageUrl = "https://via.placeholder.com/150";
 
   let itemRemovido = false;
   function increaseQuantity() {
-    product.quantidade++;
+    quantidade++;
   }
 
   function decreaseQuantity() {
-    if (product.quantidade > 1) {
-      product.quantidade--;
+    if (quantidade > 1) {
+      quantidade--;
     }
   }
 
   function updateQuantity(event) {
-    product.quantidade = parseInt(event.target.value) || 0;
+    quantidade = parseInt(event.target.value) || 0;
   }
 
   function removeItem() {
@@ -45,7 +47,7 @@
       .then((response) => {
         showToast("Item removido do carrinho com sucesso", "#009688");
         itemRemovido = true;
-        product.quantidade = 0;
+        quantidade = 0;
       })
       .catch((error) => {
         showToast(
@@ -66,14 +68,14 @@
     <p>
       Quantidade: <input
         type="number"
-        bind:value={product.quantidade}
+        bind:value={quantidade}
         on:input={updateQuantity}
         class="quantity-input"
         min="0"
       />
     </p>
     <p>
-      Subtotal: R$ {(parseFloat(product.preco) * product.quantidade).toFixed(2)}
+      Subtotal: R$ {(parseFloat(product.preco) * quantidade).toFixed(2)}
     </p>
     <div class="quantity-buttons">
       <button class="quantity-button" on:click={increaseQuantity}>+</button>
