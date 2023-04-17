@@ -11,13 +11,10 @@ default: &default
 
 development:
   <<: *default
-  database: mundo_de_princesa_dev
 
 
 test:
   <<: *default
-  database: mundo_de_princesa_teste
 
 production:
   <<: *default
-  database: <%= ENV['MYSQL_PROD_DB'] %>
