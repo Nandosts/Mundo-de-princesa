@@ -3,9 +3,9 @@ default: &default
   encoding: utf8mb4
   collation: utf8mb4_unicode_ci
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: ENV['MYSQL_USERNAME']
-  password: ENV['MYSQL_PASSWORD']
-  host: ENV['MYSQL_HOST']
+  username: <%= ENV['MYSQL_USERNAME'] %>
+  password: <%= ENV['MYSQL_PASSWORD'] %>
+  host: <%= ENV['MYSQL_HOST'] %>
   ssl_mode: verify_identity
   sslca: "/etc/ssl/certs/ca-certificates.crt"
 
@@ -20,4 +20,4 @@ test:
 
 production:
   <<: *default
-  database: ENV['MYSQL_PROD_DB']
+  database: <%= ENV['MYSQL_PROD_DB'] %>
