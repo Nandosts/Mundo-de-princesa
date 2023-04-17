@@ -1,0 +1,25 @@
+<%= stylesheet_link_tag 'footer', media: 'all' %>
+
+<footer>
+  <div class="container">
+    <p>&copy; <a href="fernando-melo.social" target="_blank">Fernando Melo</a> - <%= Time.now.year %>. Todos os direitos reservados.</p>
+    <div>
+      <h3>
+        <strong>Contato:</strong>
+      </h3>
+      <ul class="nav">
+        <li>
+          <h4>
+            <%= link_to "<i class='fab fa-whatsapp fa-lg'></i> (38) 9728-0364".html_safe, "https://api.whatsapp.com/send?phone=#{ENV['NUMERO_REDIRECIONAMENTO']}", target: "_blank" %>
+          </h4>
+        </li>
+        
+        <li>
+          <h4>
+            <%= link_to "<i class='fab fa-instagram fa-lg'></i> Instagram".html_safe, "https://www.instagram.com/mundo_de_princesa_lacos/", target: "_blank" %>
+          </h4>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>

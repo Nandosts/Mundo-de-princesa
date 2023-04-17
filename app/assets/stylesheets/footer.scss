@@ -1,0 +1,39 @@
+/* app/assets/stylesheets/footer.scss */
+
+/* Estilo para o rodapé */
+footer {
+  background-color: #f8f8f8;
+  padding: 20px;
+  margin-top: 30px;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    p {
+      margin: 0;
+    }
+
+    a {
+      color: #00607e;
+      text-decoration: none;
+
+      &:hover {
+        color: #666;
+      }
+    }
+
+    ul.nav {
+      display: flex;
+      flex-direction: column;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+
+      li {
+        display: inline-block;
+      }
+    }
+  }
+}
