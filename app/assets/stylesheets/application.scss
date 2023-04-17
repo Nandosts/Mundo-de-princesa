@@ -108,9 +108,10 @@ nav {
 .navbar-collapse a,
 .nav-cart a {
   position: relative; /* Adiciona posição relativa para poder usar ::after */
-  color: #f8f8f8;
-  font-size: 1.3rem;
+  color: #000;
+  font-size: 1.6rem;
   text-decoration: none;
+  transform: scale(2);
   &:hover {
     filter: brightness(120%);
   }
@@ -118,10 +119,10 @@ nav {
     content: "";
     position: absolute;
     left: 0;
-    bottom: -3px; /* Ajuste a altura da barra aqui */
+    bottom: -6px; /* Ajuste a altura da barra aqui */
     width: 100%;
-    height: 2px; /* Ajuste a largura da barra aqui */
-    background-color: #fff; /* Cor da barra */
+    height: 4px; /* Ajuste a largura da barra aqui */
+    background-color: #000; /* Cor da barra */
     transform: scaleX(0); /* Inicialmente, a barra não é visível */
     transition: transform 0.3s ease-in-out; /* Adiciona uma transição suave */
   }
