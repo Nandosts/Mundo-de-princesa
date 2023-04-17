@@ -3,6 +3,7 @@
 class ProdutosController < ApplicationController
   before_action :authenticate_user!
   before_action :check_admin
+  before_action :set_produto, only: %i[show edit update destroy]
 
   def index
     @produtos = Produto.all
@@ -13,17 +14,14 @@ class ProdutosController < ApplicationController
   end
 
   def show
-    @produto = Produto.find(params[:id])
   end
 
-  # app/controllers/produtos_controller.rb
   def create
     @produto = Produto.new(produto_params)
     if @produto.save
       begin
         image_change(@produto)
         @produto.update(imageUrl: url_for(@produto.imagem))
-        # Associar a imagem ao produto
         flash.now[:notice] = 'Produto criado com sucesso!'
         redirect_to @produto
       rescue StandardError => e
@@ -37,12 +35,10 @@ class ProdutosController < ApplicationController
   end
 
   def edit
-    @produto = Produto.find(params[:id])
   end
 
   def update
-    @produto = Produto.find(params[:id])
-    if @produto.update!(produto_params)
+    if @produto.update(produto_params)
       begin
         image_change(@produto)
         @produto.update(imageUrl: url_for(@produto.imagem))
@@ -59,7 +55,6 @@ class ProdutosController < ApplicationController
   end
 
   def destroy
-    @produto = Produto.find(params[:id])
     @produto.destroy
     flash.now[:notice] = 'Produto excluído com sucesso!'
     redirect_to produtos_path
@@ -83,5 +78,9 @@ class ProdutosController < ApplicationController
 
     produto.imagem.purge if produto.imagem.attached?
     produto.imagem.attach(imagem)
+  end
+
+  def set_produto
+    @produto = Produto.find(params[:id])
   end
 end
