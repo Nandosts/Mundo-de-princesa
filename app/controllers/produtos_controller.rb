@@ -20,8 +20,10 @@ class ProdutosController < ApplicationController
     @produto = Produto.new(produto_params)
     if @produto.save
       begin
-        image_change(@produto)
-        @produto.update(imageUrl: url_for(@produto.imagem))
+        unless params[:produto][:imagem].nil?
+          image_change(@produto)
+          @produto.update(imageUrl: url_for(@produto.imagem))
+        end
         flash.now[:notice] = 'Produto criado com sucesso!'
         redirect_to @produto
       rescue StandardError => e
@@ -29,7 +31,7 @@ class ProdutosController < ApplicationController
         render :new
       end
     else
-      flash.now[:alert] = 'Alguma coisa deu errado.'
+      flash.now[:alert] = "Alguma coisa deu errado. #{@produto.errors.full_messages.join(', ')}"
       render :new
     end
   end
@@ -40,8 +42,10 @@ class ProdutosController < ApplicationController
   def update
     if @produto.update(produto_params)
       begin
-        image_change(@produto)
-        @produto.update(imageUrl: url_for(@produto.imagem))
+        unless params[:produto][:imagem].nil?
+          image_change(@produto)
+          @produto.update(imageUrl: url_for(@produto.imagem))
+        end
         flash.now[:notice] = 'Produto atualizado com sucesso!'
         redirect_to @produto
       rescue StandardError => e
@@ -49,7 +53,7 @@ class ProdutosController < ApplicationController
         render :edit
       end
     else
-      flash.now[:alert] = 'Alguma coisa deu errado.'
+      flash.now[:alert] = "Alguma coisa deu errado. #{@produto.errors.full_messages.join(', ')}"
       render :edit
     end
   end

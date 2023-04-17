@@ -1,0 +1,13 @@
+pt-BR:
+  activerecord:
+    errors:
+      models:
+        produto:
+          attributes:
+            nome:
+              blank: "Precisa ser preenchido"
+            preco:
+              blank: "Precisa ser preenchido"
+            imagem:
+              blank: "Precisa ser preenchida"
+
