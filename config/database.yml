@@ -6,7 +6,6 @@ default: &default
   username: ENV['MYSQL_USERNAME']
   password: ENV['MYSQL_PASSWORD']
   host: ENV['MYSQL_HOST']
-  port: ENV['MYSQL_PORT']
   ssl_mode: verify_identity
   sslca: "/etc/ssl/certs/ca-certificates.crt"
 
