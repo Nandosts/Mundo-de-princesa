@@ -8,6 +8,18 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <!-- Meta dados para SEO -->
+    <meta name="description" content="Mundo De Princesa - Loja online de venda de laços">
+    <meta name="keywords" content="Mundo De Princesa, laços, venda de laços, site de venda de laços, laços, loja online">
+    <meta name="author" content="Fernando Melo">
+
+    <!-- Meta dados para redes sociais -->
+    <meta property="og:title" content="Mundo De Princesa - Loja online de venda de laços">
+    <meta property="og:description" content="Mundo De Princesa é uma loja online especializada em venda de laços.">
+    <meta property="og:image" content="https://mundo-de-princesa-production.up.railway.app/assets/logo.svg">
+    <meta property="og:url" content="https://mundo-de-princesa-production.up.railway.app/">
+    <meta property="og:type" content="website">
+
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_pack_tag 'application' %>
   </head>
@@ -20,7 +32,5 @@
       <%= yield %>
     </div>
     <%= render 'layouts/footer' %>
-
-    <!-- Adicione aqui os links para os scripts JavaScript que você utiliza -->
   </body>
 </html>
