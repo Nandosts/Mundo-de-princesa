@@ -13,7 +13,7 @@ User.create(
   admin: ENV['ADMIN_ROLE'] == 'admin'
 )
 
-(1..5).each do |_i|
+(1..10).each do |_i|
   # Crie um produto
   lacinho1 = Produto.create(nome: 'Lacinho 1', descricao: 'Descrição do Lacinho 1', preco: 9.99)
 
