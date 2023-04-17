@@ -26,6 +26,7 @@
   let mostrandoLoading = false; // Variável para controlar se o loading está sendo mostrado
 
   function carregarMaisProdutos() {
+    if (produtos && lista && produtos.length == lista.length) return;
     mostrandoLoading = true; // Ativa o indicador de loading
     setTimeout(() => {
       const startIndex = produtos.length;
