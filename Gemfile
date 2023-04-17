@@ -65,3 +65,5 @@ gem "figaro", "~> 1.2"
 
 gem "devise", "~> 4.9"
 
+
+gem "mysql2", "~> 0.5.5"
