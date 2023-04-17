@@ -8,6 +8,7 @@ default: &default
   host: <%= ENV['MYSQL_HOST'] %>
   ssl_mode: verify_identity
   sslca: "/etc/ssl/certs/ca-certificates.crt"
+  database: <%= ENV['MYSQL_PROD_DB'] %>
 
 development:
   <<: *default
@@ -18,3 +19,4 @@ test:
 
 production:
   <<: *default
+  database: <%= ENV['MYSQL_PROD_DB'] %>
