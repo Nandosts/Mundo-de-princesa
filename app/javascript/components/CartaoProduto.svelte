@@ -33,6 +33,9 @@
     hidden: false,
   };
 
+  $: if (isNaN(produto.quantidade) || produto.quantidade == null) {
+    produto.quantidade = 1;
+  }
   function triggerRemove() {
     const confirmResult = window.confirm(
       "Tem certeza que deseja remover o produto?"
@@ -66,6 +69,16 @@
         showToast("Erro ao adicionar produto ao carrinho", "#f44336");
       });
   }
+
+  function increaseQuantity() {
+    produto.quantidade++;
+  }
+
+  function decreaseQuantity() {
+    if (produto.quantidade > 1) {
+      produto.quantidade--;
+    }
+  }
 </script>
 
 {#if hidden != true}
@@ -76,25 +89,52 @@
       class="product-card__image"
     />
     <div class="product-card__content">
-      <h2 class="product-card__title">{produto.nome || nome}</h2>
-      {#if is_admin}
-        <div class="product-card__actions">
-          <a class="show-button" href="/produtos/{produto.id}">
-            <i class="fas fa-eye" />
-          </a>
-          <a class="edit-button" href="/produtos/{produto.id}/edit">
-            <i class="fas fa-pen" />
-          </a>
-          <!-- svelte-ignore a11y-invalid-attribute -->
-          <a class="remove-button" on:click={triggerRemove} href="#">
-            <i class="fas fa-trash" />
-          </a>
+      <div class="product-card__content__right">
+        {#if is_admin}
+          <div class="product-card__content__right__actions">
+            <a class="show-button" href="/produtos/{produto.id}">
+              <i class="fas fa-eye" />
+            </a>
+            <a class="edit-button" href="/produtos/{produto.id}/edit">
+              <i class="fas fa-pen" />
+            </a>
+            <!-- svelte-ignore a11y-invalid-attribute -->
+            <a class="remove-button" on:click={triggerRemove} href="#">
+              <i class="fas fa-trash" />
+            </a>
+          </div>
+        {/if}
+
+        <div class="product-card__content__right__quantidade">
+          <div class="product-card__content__right__quantidade-buttons">
+            <button
+              class="product-card__content__right__quantidade-buttons-button"
+              on:click={increaseQuantity}>+</button
+            >
+            <input
+              type="text"
+              bind:value={produto.quantidade}
+              class="product-card__content__right__quantidade-buttons-input"
+            />
+            <button
+              class="product-card__content__right__quantidade-buttons-button"
+              on:click={decreaseQuantity}>-</button
+            >
+          </div>
         </div>
-      {/if}
-      <p class="product-card__price">
-        {"R$" + parseFloat(produto.preco || preco).toFixed(2)}
-      </p>
-      <button class="product-card__button" on:click={adicionarAoCarrinho}>
+      </div>
+      <div class="product-card__content__left">
+        <h2 class="product-card__content__left__title">
+          {produto.nome || nome}
+        </h2>
+        <p class="product-card__content__left__price">
+          {"R$" + parseFloat(produto.preco || preco).toFixed(2)}
+        </p>
+      </div>
+      <button
+        class="product-card__content__button"
+        on:click={adicionarAoCarrinho}
+      >
         Adicionar ao carrinho
       </button>
     </div>
@@ -109,66 +149,118 @@
     padding: 16px;
     width: 250px;
     position: relative;
-  }
 
-  @media (min-width: 1500px) {
-    .product-card {
+    @media (min-width: 1500px) {
       width: 300px;
     }
-    .product-card__image {
-      height: 250px;
+
+    &__image {
+      width: 100%;
+      height: 200px;
+      object-fit: contain;
+      border-radius: 4px;
+      position: relative;
     }
-  }
 
-  .product-card__image {
-    width: 100%;
-    height: 200px;
-    object-fit: contain;
-    border-radius: 4px;
-    position: relative;
-  }
-  .product-card__content {
-    position: relative;
-  }
-  .product-card__title {
-    font-size: 1.2rem;
-    margin-top: 8px;
-    margin-bottom: 4px;
-  }
+    &__content {
+      position: relative;
+      display: grid;
+      grid-template-areas: "L R" "BTN BTN";
+      align-items: center;
 
-  .product-card__actions {
-    position: absolute;
-    top: 0;
-    right: 0;
-    border-radius: 5px;
-    font-size: 1.2rem;
+      &__left {
+        grid-area: L;
 
-    a {
-      color: var(--texto-principal);
+        &__title {
+          font-size: 1.2rem;
+          margin-top: 8px;
+          margin-bottom: 4px;
+        }
+
+        &__price {
+          font-size: 1rem;
+          color: var(--texto-secundario);
+          margin-bottom: 8px;
+        }
+      }
+
+      &__right {
+        grid-area: R;
+        margin-left: auto;
+
+        &__actions {
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          column-gap: 1rem;
+          border-radius: 5px;
+          font-size: 1.2rem;
+
+          a {
+            color: var(--texto-principal);
+          }
+        }
+
+        &__quantidade {
+          &-buttons {
+            &-input {
+              padding: 0.2rem 0.5rem;
+              width: 30%;
+              border: 1px solid;
+              border-radius: 5px;
+              background-color: #f8f8f8;
+              color: var(--texto-secundario);
+              font-size: 1rem;
+
+              &:focus {
+                outline: none;
+              }
+            }
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            justify-content: flex-end;
+            &-button {
+              width: 1.5rem;
+              height: 1.5rem;
+              border: none;
+              border-radius: 5px;
+              background-color: var(--texto-secundario);
+              color: #fff;
+              font-size: 1rem;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              cursor: pointer;
+              &:hover {
+                background-color: #222;
+              }
+              &:focus {
+                outline: none;
+              }
+            }
+          }
+        }
+      }
+
+      &__button {
+        grid-area: BTN;
+        display: block;
+        width: 100%;
+        padding: 8px;
+        font-size: 1rem;
+        text-align: center;
+        background-color: var(--texto-principal);
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
+
+        &:hover {
+          background-color: #005a86;
+        }
+      }
     }
-  }
-
-  .product-card__price {
-    font-size: 1rem;
-    color: var(--texto-secundario);
-    margin-bottom: 8px;
-  }
-
-  .product-card__button {
-    display: block;
-    width: 100%;
-    padding: 8px;
-    font-size: 1rem;
-    text-align: center;
-    background-color: var(--texto-principal);
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
-  }
-
-  .product-card__button:hover {
-    background-color: #005a86;
   }
 </style>
